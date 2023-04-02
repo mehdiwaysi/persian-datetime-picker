@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               initialDate: Jalali.now(),
                               firstDate: Jalali(1385, 8),
                               lastDate: Jalali(1450, 9),
-                              helpStyle: theme.textTheme.headline6.copyWith(fontSize: 16),
+                              helpStyle: theme.textTheme.headline6.copyWith(fontSize: 18,color: Colors.white),
                               initialEntryMode: PDatePickerEntryMode.calendarOnly,
                               initialDatePickerMode: PDatePickerMode.year,
                               builder: (condex, child) {

@@ -119,6 +119,7 @@ Future<Jalali?> showPersianDatePicker({
     initialEntryMode: initialEntryMode,
     selectableDayPredicate: selectableDayPredicate,
     helpText: helpText,
+    helpStyle: helpStyle,
     cancelText: cancelText,
     confirmText: confirmText,
     initialCalendarMode: initialDatePickerMode,
