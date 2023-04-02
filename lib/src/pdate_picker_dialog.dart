@@ -6,6 +6,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 import 'package:persian_datetime_picker/src/date/shamsi_date.dart';
+import 'package:persian_number_utility/persian_number_utility.dart';
 
 import 'pcalendar_date_picker.dart';
 import 'pdate_picker_common.dart';
@@ -84,6 +85,7 @@ Future<Jalali?> showPersianDatePicker({
   PDatePickerEntryMode initialEntryMode = PDatePickerEntryMode.calendar,
   PSelectableDayPredicate? selectableDayPredicate,
   String? helpText,
+  TextStyle? helpStyle,
   String? cancelText,
   String? confirmText,
   Locale? locale,
@@ -162,6 +164,7 @@ class _DatePickerDialog extends StatefulWidget {
     this.cancelText,
     this.confirmText,
     this.helpText,
+    this.helpStyle,
     this.initialCalendarMode = PDatePickerMode.day,
     this.errorFormatText,
     this.errorInvalidText,
@@ -207,6 +210,7 @@ class _DatePickerDialog extends StatefulWidget {
   ///
   /// This is used to indicate to the user what they are selecting a date for.
   final String? helpText;
+  final TextStyle? helpStyle;
 
   /// The initial display of the calendar picker.
   final PDatePickerMode initialCalendarMode;
@@ -411,10 +415,16 @@ class _DatePickerDialogState extends State<_DatePickerDialog> {
         break;
     }
 
+     TextStyle? helpStyle = textTheme.headline6?.copyWith(
+       color: Colors.black
+
+    );
+
     final Widget header = PDatePickerHeader(
       // TODO(darrenaustin): localize 'SELECT DATE'
       helpText: widget.helpText ?? 'انتخاب تاریخ',
-      titleText: dateText,
+      helpStyle: widget.helpStyle ?? helpStyle!,
+      titleText: dateText.toPersianDigit(),
       titleStyle: dateStyle,
       orientation: orientation,
       isShort: orientation == Orientation.landscape,

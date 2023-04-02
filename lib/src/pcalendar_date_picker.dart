@@ -4,6 +4,8 @@
 
 import 'dart:math' as math;
 
+import 'package:persian_number_utility/persian_number_utility.dart';
+
 import './pdate_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -265,7 +267,8 @@ class _CalendarDatePickerState extends State<PCalendarDatePicker> {
         // Put the mode toggle button on top so that it won't be covered up by the _MonthPicker
         _DatePickerModeToggleButton(
           mode: _mode,
-          title: formatMonthYear(_currentDisplayedMonthDate!),
+          // title: formatMonthYear(_currentDisplayedMonthDate!).toPersianDigit(),
+          title: "",
           onTitlePressed: () {
             // Toggle the day/year mode.
             _handleModeChanged(_mode == PDatePickerMode.day
@@ -364,6 +367,7 @@ class _DatePickerModeToggleButtonState
                             overflow: TextOverflow.ellipsis,
                             style: textTheme.subtitle2?.copyWith(
                               color: controlColor,
+                                fontFamily: "Dana",fontSize: 16
                             ),
                           ),
                         ),
@@ -699,8 +703,8 @@ class _DayPicker extends StatelessWidget {
         Widget dayWidget = Container(
           decoration: decoration,
           child: Center(
-            child: Text(formatDecimal(day),
-                style: dayStyle!.apply(color: dayColor)),
+            child: Text(formatDecimal(day).toPersianDigit(),
+                style: dayStyle!.apply(color: dayColor,fontFamily: "Dana",fontSizeFactor: 1.4)),
           ),
         );
 
@@ -798,7 +802,7 @@ class _DayHeaders extends StatelessWidget {
     for (int i = firstDayOfWeekIndex; true; i = (i + 1) % 7) {
       final String weekday = narrowWeekdays[i];
       result.add(ExcludeSemantics(
-        child: Center(child: Text(weekday, style: headerStyle)),
+        child: Center(child: Text(weekday.toPersianDigit(), style: headerStyle,)),
       ));
       if (i == (firstDayOfWeekIndex - 1) % 7) break;
     }
@@ -811,6 +815,7 @@ class _DayHeaders extends StatelessWidget {
     final ColorScheme colorScheme = theme.colorScheme;
     final TextStyle? dayHeaderStyle = theme.textTheme.caption?.apply(
       color: colorScheme.onSurface.withOpacity(0.60),
+      fontSizeFactor: 1.2, fontFamily: "Dana"
     );
     final MaterialLocalizations localizations =
         MaterialLocalizations.of(context);
@@ -920,7 +925,7 @@ class _YearPickerState extends State<_YearPicker> {
     } else {
       textColor = colorScheme.onSurface.withOpacity(0.87);
     }
-    final TextStyle? itemStyle = textTheme.bodyText1?.apply(color: textColor);
+    final TextStyle? itemStyle = textTheme.bodyText1?.apply(color: textColor,fontFamily: "Dana",fontSizeFactor: 1.2);
 
     BoxDecoration? decoration;
     if (isSelected) {
@@ -948,7 +953,7 @@ class _YearPickerState extends State<_YearPicker> {
         child: Center(
           child: Semantics(
             selected: isSelected,
-            child: Text(year.toString(), style: itemStyle),
+            child: Text(year.toString().toPersianDigit(), style: itemStyle),
           ),
         ),
       ),

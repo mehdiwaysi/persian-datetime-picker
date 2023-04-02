@@ -42,6 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final ThemeData theme = Theme.of(context);
+    final TextTheme textTheme = theme.textTheme;
+
     return new Directionality(
       textDirection: TextDirection.rtl,
       child: Scaffold(
@@ -79,6 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               initialDate: Jalali.now(),
                               firstDate: Jalali(1385, 8),
                               lastDate: Jalali(1450, 9),
+                              helpStyle: theme.textTheme.headline6.copyWith(fontSize: 16),
                               initialEntryMode: PDatePickerEntryMode.calendarOnly,
                               initialDatePickerMode: PDatePickerMode.year,
                               builder: (condex, child) {

@@ -36,12 +36,14 @@ class PDatePickerHeader extends StatelessWidget {
     required this.icon,
     required this.iconTooltip,
     required this.onIconPressed,
+    required this.helpStyle,
   })  : super(key: key);
 
   /// The text that is displayed at the top of the header.
   ///
   /// This is used to indicate to the user what they are selecting a date for.
   final String helpText;
+  final TextStyle helpStyle;
 
   /// The text that is displayed at the center of the header.
   final String titleText;
@@ -92,9 +94,9 @@ class PDatePickerHeader extends StatelessWidget {
     final Color onPrimarySurfaceColor =
         isDark ? colorScheme.onSurface : colorScheme.onPrimary;
 
-    final TextStyle? helpStyle = textTheme.overline?.copyWith(
-      color: onPrimarySurfaceColor,
-    );
+    // final TextStyle? helpStyle = textTheme.overline?.copyWith(
+    //   color: onPrimarySurfaceColor,
+    // );
 
     final Text help = Text(
       helpText,
@@ -122,7 +124,7 @@ class PDatePickerHeader extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
-              height: _datePickerHeaderPortraitHeight,
+              height: _datePickerHeaderPortraitHeight + 30,
               color: primarySurfaceColor,
               padding: const EdgeInsetsDirectional.only(
                 start: 24,

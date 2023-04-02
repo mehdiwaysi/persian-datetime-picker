@@ -652,6 +652,7 @@ class _PInputDateRangePickerDialog extends StatelessWidget {
 
     final Widget header = PDatePickerHeader(
       helpText: helpText,
+      helpStyle: new TextStyle(),
       titleText: dateText,
       titleSemanticsLabel: semanticDateText,
       titleStyle: dateStyle,
